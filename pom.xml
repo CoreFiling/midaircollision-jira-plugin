@@ -5,17 +5,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.corefiling.jira.plugins</groupId>
+    <groupId>com.corefiling.jira</groupId>
     <artifactId>midaircollision</artifactId>
-    <version>7.0</version>
+    <version>0.9</version>
 
     <organization>
         <name>CoreFiling</name>
-        <url>https://github.com/CoreFiling/midaircollision-jira-plugin/</url>
+        <url>http://www.corefiling.com/</url>
     </organization>
 
     <name>midaircollision</name>
-    <description>JIRA plugin to prevent mid-air collisions, due to lack of native support (https://jira.atlassian.com/browse/JRASERVER-6146)</description>
+    <description>This is the com.corefiling.jira:midaircollision plugin for Atlassian JIRA.</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>
@@ -42,27 +42,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.atlassian.plugin</groupId>
-            <artifactId>atlassian-spring-scanner-annotation</artifactId>
-            <version>${atlassian.spring.scanner.version}</version>
-            <scope>compile</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.atlassian.plugin</groupId>
-            <artifactId>atlassian-spring-scanner-runtime</artifactId>
-            <version>${atlassian.spring.scanner.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- WIRED TEST RUNNER DEPENDENCIES -->
         <dependency>
             <groupId>com.atlassian.plugins</groupId>
@@ -81,12 +60,6 @@
             <artifactId>gson</artifactId>
             <version>2.2.2-atlassian-1</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-            <version>4.10.4</version>
-        </dependency>
-
 
 		<!-- Uncomment to use TestKit in your project. Details at https://bitbucket.org/atlassian/jira-testkit -->
 		<!-- You can read more about TestKit at https://developer.atlassian.com/display/JIRADEV/Plugin+Tutorial+-+Smarter+integration+testing+with+TestKit -->
@@ -120,45 +93,24 @@
 						</pluginArtifact>
 					</pluginArtifacts>
 					-->
-                    <enableQuickReload>true</enableQuickReload>
-                    <enableFastdev>false</enableFastdev>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>com.atlassian.plugin</groupId>
-                <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
-                <version>${atlassian.spring.scanner.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>atlassian-spring-scanner</goal>
-                        </goals>
-                        <phase>process-classes</phase>
-                    </execution>
-                </executions>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <scannedDependencies>
-                        <dependency>
-                            <groupId>com.atlassian.plugin</groupId>
-                            <artifactId>atlassian-spring-scanner-external-jar</artifactId>
-                        </dependency>
-                    </scannedDependencies>
-                    <verbose>false</verbose>
+                    <source>1.6</source>
+                    <target>1.6</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <jira.version>7.3.6</jira.version>
-        <amps.version>6.2.6</amps.version>
-        <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
-        <atlassian.spring.scanner.version>1.2.13</atlassian.spring.scanner.version>
-        <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
-        <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
-		<!-- TestKit version 6.x for JIRA 6.x -->
-		<testkit.version>6.3.11</testkit.version>
+        <jira.version>6.3.1</jira.version>
+        <amps.version>5.0.3</amps.version>
+        <plugin.testrunner.version>1.2.0</plugin.testrunner.version>
+		<!-- TestKit version 5.x for JIRA 5.x, 6.x for JIRA 6.x -->
+		<testkit.version>5.2.26</testkit.version>
     </properties>
 
 </project>
